@@ -4,25 +4,43 @@
   "description": "React SDUI rendering wrapper for the Agnostic Blade System.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/slashand/sdui-blade-react.git"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
   "scripts": {
     "build": "tsc",
-    "dev": "tsc -w"
+    "dev": "tsc -w",
+    "publish:alpha": "npm version prerelease --preid=alpha && npm run build && npm publish ./dist --tag alpha",
+    "publish:prod": "npm version patch && npm run build && npm publish ./dist"
   },
   "dependencies": {
-    "@slashand/sdui-blade-core": "file:../sdui-blade-core",
+    "@slashand/sdui-blade-core": "^1.0.0",
+    "clsx": "latest",
     "framer-motion": "latest",
     "lucide-react": "latest",
-    "clsx": "latest",
     "tailwind-merge": "latest"
   },
   "peerDependencies": {
     "react": "^18.0.0 || ^19.0.0",
     "react-dom": "^18.0.0 || ^19.0.0",
-    "zustand": "^4.5.2"
+    "zustand": "^5.0.12"
   },
   "devDependencies": {
-    "typescript": "^5.0.0",
+    "@types/node": "^20.0.0",
     "@types/react": "^18.0.0",
-    "@types/node": "^20.0.0"
+    "typescript": "^5.9.3"
   }
 }
