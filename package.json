@@ -1,6 +1,6 @@
 {
   "name": "@slashand/sdui-blade-react",
-  "version": "1.0.1",
+  "version": "1.0.4",
   "description": "React SDUI rendering wrapper for the Agnostic Blade System.",
   "author": "Slashand Studio",
   "license": "MIT",
@@ -38,8 +38,8 @@
   "scripts": {
     "build": "tsc",
     "dev": "tsc -w",
-    "publish:alpha": "npm version prerelease --preid=alpha --no-git-tag-version && npm run build && npm publish ./dist --tag alpha",
-    "publish:prod": "npm version patch --no-git-tag-version && npm run build && npm publish ./dist"
+    "publish:alpha": "npm version prerelease --preid=alpha --no-git-tag-version && npm run build && npm publish --tag alpha",
+    "publish:prod": "npm version patch --no-git-tag-version && npm run build && npm publish"
   },
   "dependencies": {
     "@slashand/sdui-blade-core": "^1.0.0",
