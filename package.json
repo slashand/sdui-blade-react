@@ -1,7 +1,17 @@
 {
   "name": "@slashand/sdui-blade-react",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "React SDUI rendering wrapper for the Agnostic Blade System.",
+  "author": "Slashand Studio",
+  "license": "MIT",
+  "keywords": [
+    "sdui",
+    "server-driven-ui",
+    "react",
+    "blade-system",
+    "json-ui"
+  ],
+  "type": "module",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
@@ -10,6 +20,7 @@
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
       "default": "./dist/index.js"
     }
   },
@@ -17,14 +28,18 @@
     "type": "git",
     "url": "https://github.com/slashand/sdui-blade-react.git"
   },
+  "bugs": {
+    "url": "https://github.com/slashand/sdui-blade-react/issues"
+  },
+  "homepage": "https://github.com/slashand/sdui-blade-react#readme",
   "publishConfig": {
-    "registry": "https://npm.pkg.github.com"
+    "access": "public"
   },
   "scripts": {
     "build": "tsc",
     "dev": "tsc -w",
-    "publish:alpha": "npm version prerelease --preid=alpha && npm run build && npm publish ./dist --tag alpha",
-    "publish:prod": "npm version patch && npm run build && npm publish ./dist"
+    "publish:alpha": "npm version prerelease --preid=alpha --no-git-tag-version && npm run build && npm publish ./dist --tag alpha",
+    "publish:prod": "npm version patch --no-git-tag-version && npm run build && npm publish ./dist"
   },
   "dependencies": {
     "@slashand/sdui-blade-core": "^1.0.0",
@@ -39,8 +54,8 @@
     "zustand": "^5.0.12"
   },
   "devDependencies": {
-    "@types/node": "^20.0.0",
-    "@types/react": "^18.0.0",
+    "@types/node": "^22.5.0",
+    "@types/react": "^19.2.14",
     "typescript": "^5.9.3"
   }
 }
