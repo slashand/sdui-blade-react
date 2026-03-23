@@ -1,0 +1,42 @@
+{
+  "id": "blade-overview-001",
+  "type": "Sdui.Container.Blade",
+  "properties": {
+    "title": "Application Dashboard",
+    "subtitle": "Overview"
+  },
+  "children": [
+    {
+      "id": "sec-status-01",
+      "type": "Sdui.Layout.Section",
+      "properties": { "title": "System Status" },
+      "children": [
+        {
+          "id": "text-online",
+          "type": "Sdui.Display.Text",
+          "properties": { "value": "All systems are operational and actively monitored." }
+        },
+        {
+          "id": "btn-refresh",
+          "type": "Sdui.Action.Button",
+          "properties": {
+            "label": "Refresh Metrics",
+            "action": { "type": "dispatch", "target": "refresh_all" }
+          }
+        }
+      ]
+    },
+    {
+      "id": "sec-extensions",
+      "type": "Sdui.Layout.Section",
+      "properties": { "title": "Active Integrations" },
+      "children": [
+        {
+          "id": "mount-billing",
+          "type": "Sdui.Core.ExtensionMount",
+          "properties": { "mountPoint": "Billing.Extension.Summary" }
+        }
+      ]
+    }
+  ]
+}

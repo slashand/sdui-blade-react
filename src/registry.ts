@@ -7,19 +7,19 @@ export type ComponentRegistryMap = Record<string, React.ComponentType<{ node: Sd
  * A singleton registry that binds JSON 'type' strings to lazy-loaded or synchronous React components.
  */
 class SduiComponentRegistry {
-    private registry: ComponentRegistryMap = {};
+  private registry: ComponentRegistryMap = {};
 
-    register(type: string, component: React.ComponentType<{ node: SduiBladeNode }>) {
-        this.registry[type] = component;
-    }
+  register(type: string, component: React.ComponentType<{ node: SduiBladeNode }>) {
+    this.registry[type] = component;
+  }
 
-    registerAll(map: ComponentRegistryMap) {
-        this.registry = { ...this.registry, ...map };
-    }
+  registerAll(map: ComponentRegistryMap) {
+    this.registry = { ...this.registry, ...map };
+  }
 
-    resolve(type: string): React.ComponentType<{ node: SduiBladeNode }> | null {
-        return this.registry[type] || null;
-    }
+  resolve(type: string): React.ComponentType<{ node: SduiBladeNode }> | null {
+    return this.registry[type] || null;
+  }
 }
 
 export const BladeRegistry = new SduiComponentRegistry();

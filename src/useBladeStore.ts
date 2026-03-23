@@ -11,10 +11,10 @@ export const bladeStoreInstance: StoreApi<BladeState> = createSduiBladeStore();
 export function useBladeStore(): BladeState;
 export function useBladeStore<T>(selector: (state: BladeState) => T): T;
 export function useBladeStore<T>(selector?: (state: BladeState) => T) {
-    if (selector) {
-        return useStore(bladeStoreInstance, selector);
-    }
-    return useStore(bladeStoreInstance);
+  if (selector) {
+    return useStore(bladeStoreInstance, selector);
+  }
+  return useStore(bladeStoreInstance);
 }
 
 /**
@@ -22,5 +22,5 @@ export function useBladeStore<T>(selector?: (state: BladeState) => T) {
  * Can be called high up in the React tree (e.g. inside `<BladeHost>`).
  */
 export function syncBladeUrlState() {
-    // Utility to be implemented linking `bladeStoreInstance` with window.location
+  // Utility to be implemented linking `bladeStoreInstance` with window.location
 }
