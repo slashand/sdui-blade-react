@@ -1,0 +1,5 @@
+src/renderer/SduiRenderer.spec.tsx(6,1): error TS2582: Cannot find name 'describe'. Do you need to install type definitions for a test runner? Try `npm i --save-dev @types/jest` or `npm i --save-dev @types/mocha`.
+src/renderer/SduiRenderer.spec.tsx(7,3): error TS2582: Cannot find name 'it'. Do you need to install type definitions for a test runner? Try `npm i --save-dev @types/jest` or `npm i --save-dev @types/mocha`.
+src/renderer/SduiRenderer.spec.tsx(27,5): error TS2304: Cannot find name 'expect'.
+src/renderer/SduiRenderer.spec.tsx(28,5): error TS2304: Cannot find name 'expect'.
+src/renderer/SduiRenderer.spec.tsx(31,5): error TS2304: Cannot find name 'expect'.
