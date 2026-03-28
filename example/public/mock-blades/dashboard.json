@@ -1,42 +1,105 @@
 {
-  "id": "blade-overview-001",
-  "type": "Sdui.Container.Blade",
-  "properties": {
-    "title": "Application Dashboard",
-    "subtitle": "Overview"
-  },
-  "children": [
-    {
-      "id": "sec-status-01",
-      "type": "Sdui.Layout.Section",
-      "properties": { "title": "System Status" },
-      "children": [
-        {
-          "id": "text-online",
-          "type": "Sdui.Display.Text",
-          "properties": { "value": "All systems are operational and actively monitored." }
-        },
-        {
-          "id": "btn-refresh",
-          "type": "Sdui.Action.Button",
-          "properties": {
-            "label": "Refresh Metrics",
-            "action": { "type": "dispatch", "target": "refresh_all" }
-          }
-        }
-      ]
+  "version": "1.0",
+  "blade": {
+    "id": "blade-root-cybernetic",
+    "type": "Sdui.Container.Blade",
+    "properties": {
+      "title": "Quantum Cluster Management",
+      "subtitle": "Region: EU-West (Frankfurt)",
+      "width": "huge"
     },
-    {
-      "id": "sec-extensions",
-      "type": "Sdui.Layout.Section",
-      "properties": { "title": "Active Integrations" },
-      "children": [
-        {
-          "id": "mount-billing",
-          "type": "Sdui.Core.ExtensionMount",
-          "properties": { "mountPoint": "Billing.Extension.Summary" }
+    "children": [
+      {
+        "id": "alert-outage",
+        "type": "Sdui.Display.Alert",
+        "properties": {
+          "type": "error",
+          "title": "Node Desynchronization Detected",
+          "message": "Critical temporal rift detected across 4 compute shards. Manual alignment required immediately."
         }
-      ]
-    }
-  ]
+      },
+      {
+        "id": "pivot-cluster-nav",
+        "type": "Sdui.Layout.Pivot",
+        "properties": {
+          "items": [
+            { "title": "TopographyMap", "targetId": "tab-1" },
+            { "title": "Bandwidth Pipeline", "targetId": "tab-2" },
+            { "title": "Firewall Logs", "targetId": "tab-3" },
+            { "title": "Encryption Keys", "targetId": "tab-4" }
+          ]
+        }
+      },
+      {
+        "id": "section-live-metrics",
+        "type": "Sdui.Layout.Section",
+        "properties": {
+          "title": "Active Core Splines"
+        },
+        "children": [
+          {
+            "id": "health-status",
+            "type": "Sdui.Display.StatusBadge",
+            "properties": {
+              "status": "warning",
+              "text": "Spline Delta 14% Degraded"
+            }
+          },
+          {
+            "id": "health-status-2",
+            "type": "Sdui.Display.StatusBadge",
+            "properties": {
+              "status": "success",
+              "text": "Neural Net Converged"
+            }
+          },
+          {
+            "id": "metric-instructions",
+            "type": "Sdui.Display.Text",
+            "properties": {
+              "value": "WARNING: Ensure local cache is flushed before orchestrating load balancers."
+            }
+          },
+          {
+            "id": "btn-recalibrate",
+            "type": "Sdui.Action.Button",
+            "properties": {
+              "label": "Initiate Cluster Recalibration",
+              "action": {
+                "type": "dispatch",
+                "target": "recalibrate_shards"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "id": "section-database",
+        "type": "Sdui.Layout.Section",
+        "properties": {
+          "title": "Postgres Replica Status"
+        },
+        "children": [
+          {
+            "id": "txt-db-info",
+            "type": "Sdui.Display.Text",
+            "properties": {
+              "value": "Master connection stable. Read replicas trailing by 4s pulse rate."
+            }
+          },
+          {
+            "id": "btn-promote",
+            "type": "Sdui.Action.Button",
+            "properties": {
+              "label": "Promote Replica to Master",
+              "action": {
+                "type": "api",
+                "endpoint": "/v1/cluster/promote"
+              }
+            }
+          }
+        ]
+      }
+    ]
+  }
 }
