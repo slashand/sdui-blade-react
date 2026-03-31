@@ -11,15 +11,23 @@ export function cn(...inputs: ClassValue[]) {
 // Extremely dense (p-4) to satisfy rigid structural limits.
 // -------------------------------------------------------------------------------------------------
 
-export type BladeSize = 'menu' | 'small' | 'medium' | 'large' | 'xlarge' | 'full';
+export type BladeSize = 'menu' | 'small' | 'medium' | 'large' | 'xlarge' | 'full' | 'xl' | '2xl' | '3xl' | '4xl' | '5xl' | '6xl' | '7xl' | 'custom';
 
-const bladeSizeClasses: Record<BladeSize, string> = {
-  menu: 'w-full max-w-[265px] shrink',
-  small: 'w-full max-w-[315px] shrink',
-  medium: 'w-full max-w-[585px] shrink',
-  large: 'w-full max-w-[855px] shrink',
-  xlarge: 'w-full max-w-[1125px] shrink',
-  full: 'w-full flex-1 shrink',
+const bladeSizeMaxWidths: Record<BladeSize, string> = {
+  menu: 'var(--sdui-blade-w-menu, 265px)',
+  small: 'var(--sdui-blade-w-small, 315px)',
+  medium: 'var(--sdui-blade-w-medium, 585px)',
+  large: 'var(--sdui-blade-w-large, 855px)',
+  xlarge: 'var(--sdui-blade-w-xlarge, 1125px)',
+  xl: 'var(--sdui-blade-w-xl, 1125px)',
+  '2xl': 'var(--sdui-blade-w-2xl, 1395px)',
+  '3xl': 'var(--sdui-blade-w-3xl, 1665px)',
+  '4xl': 'var(--sdui-blade-w-4xl, 1935px)',
+  '5xl': 'var(--sdui-blade-w-5xl, 2205px)',
+  '6xl': 'var(--sdui-blade-w-6xl, 2475px)',
+  '7xl': 'var(--sdui-blade-w-7xl, 2745px)',
+  custom: 'var(--sdui-blade-custom-w, 100%)',
+  full: 'none',
 };
 
 export interface BaseBladeProps extends React.HTMLAttributes<HTMLDivElement> {
@@ -28,17 +36,26 @@ export interface BaseBladeProps extends React.HTMLAttributes<HTMLDivElement> {
   children: React.ReactNode;
 }
 
-export function BaseBlade({ children, widthClass, size = 'large', className, ...props }: BaseBladeProps) {
-  // If legacy widthClass is provided, use it. Otherwise, use strict Aztec size constraints applying the "Wall physics".
-  const resolvedWidth = widthClass || bladeSizeClasses[size];
+export function BaseBlade({ children, widthClass, size = 'large', className, style, ...props }: BaseBladeProps) {
+  // If legacy widthClass is provided, use it. Otherwise, use strict Aztec size constraints.
+  const isFull = size === 'full';
+  
+  // We use inline styles for width constraints to bypass Tailwind JIT compiler omissions in consumer repos
+  const resolvedStyle: React.CSSProperties = {
+    width: '100%',
+    maxWidth: widthClass ? undefined : bladeSizeMaxWidths[size] || bladeSizeMaxWidths['large'],
+    flex: isFull ? '1 1 0%' : undefined,
+    ...style,
+  };
 
   return (
     <div
       className={cn(
-        'flex flex-col h-full bg-[var(--th-panel-bg)] text-[var(--th-text-primary)] shadow-2xl border-l border-[var(--th-border)] ml-auto overflow-hidden',
-        resolvedWidth,
+        'sdui-base-blade-container flex flex-col h-full bg-[var(--th-panel-bg)] text-[var(--th-text-primary)] shadow-2xl border-l border-[var(--th-border)] ml-auto overflow-hidden shrink-0',
+        widthClass,
         className,
       )}
+      style={resolvedStyle}
       {...props}
     >
       {children}
