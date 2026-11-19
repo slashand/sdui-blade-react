@@ -112,7 +112,7 @@ export function BladeHost() {
                 exit={{ x: '100%', opacity: 0.5 }}
                 transition={{ type: 'spring', damping: 25, stiffness: 200 }}
               >
-                <div className={`w-full h-full pointer-events-none [&>*]:pointer-events-auto ${isBaseBlade ? '[&>*]:!w-full [&>*]:!max-w-none [&>*]:!ml-0 [&>*]:!border-l-0 [&>*]:!rounded-none' : ''}`}>
+                <div className={`w-full h-full pointer-events-none [&>*]:pointer-events-auto`}>
                   <ResolvedComponent node={blade} />
                 </div>
               </motion.div>

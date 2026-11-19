@@ -1,6 +1,6 @@
 {
   "name": "@slashand/sdui-blade-react",
-  "version": "1.0.0-alpha.4",
+  "version": "1.0.0",
   "description": "React SDUI rendering wrapper for the Agnostic Blade System.",
   "author": "Slashand LLC",
   "license": "MIT",
@@ -35,14 +35,16 @@
     "build": "tsc",
     "dev": "tsc -w",
     "format": "prettier --write \"src/**/*.{ts,tsx}\"",
-    "test": "vitest run"
+    "test": "vitest run",
+    "publish:latest": "npm run build && npm publish --access public --tag latest --provenance",
+    "publish:prod": "npm run publish:latest"
   },
   "dependencies": {
     "@slashand/sdui-blade-core": "^1.0.0-alpha.4",
-    "clsx": "latest",
+    "clsx": "^2.1.1",
     "framer-motion": ">=10.0.0",
-    "lucide-react": "latest",
-    "tailwind-merge": "latest"
+    "lucide-react": "^1.76.0",
+    "tailwind-merge": "^3.7.0"
   },
   "peerDependencies": {
     "@slashand/sdui-blade-core": "^1.0.0-alpha.4",
@@ -52,13 +54,16 @@
     "zustand": ">=4.0.0"
   },
   "devDependencies": {
-    "@testing-library/jest-dom": "^6.9.1",
-    "@testing-library/react": "^16.3.2",
-    "@types/node": "^25.5.0",
-    "@types/react": "^19.2.14",
-    "jsdom": "^29.0.1",
-    "prettier": "^3.8.1",
+    "@testing-library/jest-dom": "6.9.1",
+    "@testing-library/react": "^16.3.3",
+    "@types/node": "^24.19.2",
+    "@types/react": "^19.3.0",
+    "jsdom": "^29.1.1",
+    "prettier": "^3.10.1",
     "typescript": "^5.9.3",
-    "vitest": "^4.1.0"
+    "vitest": "^4.1.12"
+  },
+  "publishConfig": {
+    "tag": "latest"
   }
 }
