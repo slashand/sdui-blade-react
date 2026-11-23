@@ -28,7 +28,7 @@ export const CORE_PILLARS: OmniverseApp[] = [
         properties: {
           title: "Trading Desk: BTC/USD",
           subtitle: "Institutional Clearing Node",
-          width: "xlarge",
+          width: "full",
           toolbar: [
             {
               id: "crypto-tbar-1",
@@ -138,7 +138,7 @@ export const CORE_PILLARS: OmniverseApp[] = [
         properties: {
           title: "Patient: Doe, John",
           subtitle: "DOB: 1984-06-12 | MRN: 94811-A",
-          width: "large"
+          width: "full"
         },
         children: [
           {
@@ -192,8 +192,8 @@ export const CORE_PILLARS: OmniverseApp[] = [
             type: SduiElementType.Row,
             properties: { justify: "end", gap: 3 },
             children: [
-              { id: "emr-btn-cc", type: SduiElementType.Button, properties: { label: "Request Cardiology Consult" } },
-              { id: "emr-btn", type: SduiElementType.Button, properties: { label: "Authorize Epinephrine", action: { type: "api", endpoint: "/med/auth" } } }
+              { id: "emr-btn-cc", type: SduiElementType.Button, properties: { label: "Request Cardiology Consult", action: { type: "dispatch" } } },
+              { id: "emr-btn", type: SduiElementType.Button, properties: { label: "Authorize Epinephrine", action: { type: "invoke", target: "/med/auth" } } }
             ]
           }
         ]
@@ -214,7 +214,7 @@ export const CORE_PILLARS: OmniverseApp[] = [
         properties: {
           title: "Vessel: EVER GIVEN II",
           subtitle: "Current Location: Suez Canal Approach",
-          width: "xlarge" as any
+          width: "full"
         },
         children: [
           {
@@ -269,7 +269,7 @@ export const CORE_PILLARS: OmniverseApp[] = [
         properties: {
           title: "Intrusion Detection: Node Alpha",
           subtitle: "Active Threats: 14",
-          width: "medium"
+          width: "full"
         },
         children: [
           {
@@ -311,8 +311,8 @@ export const CORE_PILLARS: OmniverseApp[] = [
                 type: SduiElementType.Row,
                 properties: { justify: "end", gap: 3 },
                 children: [
-                  { id: "cyber-btn-lock", type: SduiElementType.Button, properties: { label: "Initiate VPC Lockdown" } },
-                  { id: "cyber-btn-pcap", type: SduiElementType.Button, properties: { label: "Export PCAP" } }
+                  { id: "cyber-btn-lock", type: SduiElementType.Button, properties: { label: "Initiate VPC Lockdown", action: { type: "dispatch" } } },
+                  { id: "cyber-btn-pcap", type: SduiElementType.Button, properties: { label: "Export PCAP", action: { type: "dispatch" } } }
                 ]
               }
             ]
@@ -335,7 +335,7 @@ export const CORE_PILLARS: OmniverseApp[] = [
         properties: {
           title: "GPT-7 Training Run",
           subtitle: "Epoch 14/1000 | Loss: 0.041",
-          width: "large"
+          width: "full"
         },
         children: [
           {
@@ -365,7 +365,7 @@ export const CORE_PILLARS: OmniverseApp[] = [
               {
                 id: "ai-btn",
                 type: SduiElementType.Button,
-                properties: { label: "Inject Extra Compute Shards", action: { type: "api", endpoint: "/scale" } }
+                properties: { label: "Inject Extra Compute Shards", action: { type: "invoke", target: "/scale" } }
               }
             ]
           }
@@ -384,7 +384,7 @@ export const CORE_PILLARS: OmniverseApp[] = [
       blade: {
         id: "blade-crm",
         type: SduiElementType.Blade,
-        properties: { title: "Q3 Deal Pipeline", subtitle: "Region: EMEA North", width: "xlarge" },
+        properties: { title: "Q3 Deal Pipeline", subtitle: "Region: EMEA North", width: "full" },
         children: [
           {
             id: "crm-grid",
@@ -431,7 +431,7 @@ export const CORE_PILLARS: OmniverseApp[] = [
       blade: {
         id: "blade-media",
         type: SduiElementType.Blade,
-        properties: { title: "Job Node #4A9", subtitle: "Project: Project Titan", width: "large" },
+        properties: { title: "Job Node #4A9", subtitle: "Project: Project Titan", width: "full" },
         children: [
           {
             id: "media-alert",
@@ -458,7 +458,7 @@ export const CORE_PILLARS: OmniverseApp[] = [
       blade: {
         id: "blade-pos",
         type: SduiElementType.Blade,
-        properties: { title: "Register 14", subtitle: "Cashier: J. Smith", width: "medium" },
+        properties: { title: "Register 14", subtitle: "Cashier: J. Smith", width: "full" },
         children: [
           {
             id: "pos-alert",
@@ -485,7 +485,7 @@ export const CORE_PILLARS: OmniverseApp[] = [
       blade: {
         id: "blade-payroll",
         type: SduiElementType.Blade,
-        properties: { title: "September Execution", subtitle: "Clearance: Pending Level 2", width: "large" },
+        properties: { title: "September Execution", subtitle: "Clearance: Pending Level 2", width: "full" },
         children: [
           {
             id: "hr-pivot",
@@ -520,49 +520,49 @@ export const CORE_PILLARS: OmniverseApp[] = [
             id: "stress-btn-1",
             type: SduiElementType.Button,
             properties: {
-              label: "Spawn X-Large Dimensions (1000px)",
+              label: "Spawn X-Large Dimensions (1125px)",
               action: {
                 type: "navigate",
                 payload: {
                   id: "blade-stress-xl",
                   type: SduiElementType.Blade,
-                  properties: { title: "Phase 2: X-Large Overlay", subtitle: "Width Array: 1000px", width: "xlarge" },
+                  properties: { title: "Phase 2: X-Large Overlay", subtitle: "Width Array: 1125px", width: "xlarge" },
                   children: [
                     {
                       id: "stress-btn-2",
                       type: SduiElementType.Button,
                       properties: {
-                        label: "Spawn Large Dimensions (800px)",
+                        label: "Spawn Large Dimensions (855px)",
                         action: {
                           type: "navigate",
                           payload: {
                             id: "blade-stress-l",
                             type: SduiElementType.Blade,
-                            properties: { title: "Phase 3: Large Overlay", subtitle: "Width Array: 800px", width: "large" },
+                            properties: { title: "Phase 3: Large Overlay", subtitle: "Width Array: 855px", width: "large" },
                             children: [
                               {
                                 id: "stress-btn-3",
                                 type: SduiElementType.Button,
                                 properties: {
-                                  label: "Spawn Medium Dimensions (600px)",
+                                  label: "Spawn Medium Dimensions (585px)",
                                   action: {
                                     type: "navigate",
                                     payload: {
                                       id: "blade-stress-m",
                                       type: SduiElementType.Blade,
-                                      properties: { title: "Phase 4: Medium Overlay", subtitle: "Width Array: 600px", width: "medium" },
+                                      properties: { title: "Phase 4: Medium Overlay", subtitle: "Width Array: 585px", width: "medium" },
                                       children: [
                                         {
                                           id: "stress-btn-4",
                                           type: SduiElementType.Button,
                                           properties: {
-                                            label: "Spawn Small Dimensions (400px)",
+                                            label: "Spawn Small Dimensions (315px)",
                                             action: {
                                               type: "navigate",
                                               payload: {
                                                 id: "blade-stress-s",
                                                 type: SduiElementType.Blade,
-                                                properties: { title: "Phase 5: Core Minimum", subtitle: "Width Array: 400px", width: "small" },
+                                                properties: { title: "Phase 5: Core Minimum", subtitle: "Width Array: 315px", width: "small" },
                                                 children: [
                                                   {
                                                     id: "stress-alert",
@@ -602,7 +602,7 @@ export const CORE_PILLARS: OmniverseApp[] = [
 export function generateProceduralPayload(): OmniverseApp {
   const hash = Math.random().toString(36).substring(2, 9);
   
-  const randomizedChildren: any[] = [];
+  const randomizedChildren: NonNullable<SduiBladeNode['children']> = [];
   
   // Random Alert
   if (Math.random() > 0.3) {
@@ -620,7 +620,7 @@ export function generateProceduralPayload(): OmniverseApp {
 
   // Random Section with inner children
   const deepChildrenCount = Math.floor(Math.random() * 5) + 1;
-  const innerChildren = [];
+  const innerChildren: NonNullable<SduiBladeNode['children']> = [];
   
   for (let i = 0; i < deepChildrenCount; i++) {
     const r = Math.random();
@@ -652,8 +652,6 @@ export function generateProceduralPayload(): OmniverseApp {
     children: innerChildren
   });
 
-  const widths = ["small", "medium", "large", "xlarge"];
-  
   return {
     id: `chaos-${hash}`,
     name: `Chaos Matrix ${hash}`,
@@ -668,9 +666,9 @@ export function generateProceduralPayload(): OmniverseApp {
         properties: {
           title: `Procedural Node: ${hash.toUpperCase()}`,
           subtitle: "Infinite Synthesizer Engine",
-          width: widths[Math.floor(Math.random() * widths.length)] as any,
+          width: "full",
           toolbar: [
-            { id: `tbar-${hash}`, type: SduiElementType.Button, properties: { label: `Sync Node ${hash}` } }
+            { id: `tbar-${hash}`, type: SduiElementType.Button, properties: { label: `Sync Node ${hash}`, action: { type: "dispatch" } } }
           ],
           footer: [
             {
@@ -690,7 +688,8 @@ export function generateProceduralPayload(): OmniverseApp {
                   }
                 }
               }
-            }
+            },
+            { id: `close-${hash}`, type: SduiElementType.Button, properties: { label: "Close workspace", action: { type: "close" } } }
           ]
         },
         children: randomizedChildren

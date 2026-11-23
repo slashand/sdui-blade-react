@@ -1,1 +1,237 @@
-/* Purged inherited scaffold code */
+/* The example shell shares the same viewport geometry as the other SDK demos. */
+.sdui-app-shell {
+  height: 100dvh;
+  width: 100%;
+}
+.sdui-demo-workspace {
+  position: relative;
+  flex: 1;
+  min-width: 0;
+  min-height: 0;
+}
+.sdui-work-surface {
+  height: 100%;
+  min-width: 0;
+}
+.sdui-matrix-tile {
+  min-width: 0;
+  text-align: left;
+}
+.sdui-matrix-tile[data-selected='true'] {
+  border-color: var(--accent-border);
+  background: color-mix(in srgb, var(--accent) 10%, var(--code-bg));
+  box-shadow: 0 12px 26px rgb(0 0 0 / 16%);
+}
+.sdui-matrix-tile[data-selected='true']:hover {
+  background: color-mix(in srgb, var(--accent) 18%, var(--code-bg));
+}
+.sdui-matrix-tile:focus-visible,
+.sdui-app-shell button:focus-visible,
+.sdui-app-shell a:focus-visible,
+.sdui-json-textarea:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 2px;
+}
+.sdui-matrix-tile:hover h3 {
+  color: var(--text-h);
+}
+.sdui-json-editor-overlay {
+  width: min(550px, 100%);
+}
+.sdui-json-error-banner span {
+  color: var(--text-h);
+}
+.sdui-skip-link {
+  position: absolute;
+  z-index: 300;
+  left: 8px;
+  top: -60px;
+  padding: 8px 12px;
+  background: var(--code-bg);
+  color: var(--text-h);
+}
+.sdui-skip-link:focus {
+  top: 8px;
+}
+.sdui-global-header {
+  position: relative;
+  min-width: 0;
+  z-index: 200;
+}
+.sdui-brand-title {
+  min-width: 0;
+}
+.sdui-options-toggle {
+  display: none;
+}
+
+@media (max-width: 639px) {
+  .sdui-global-header {
+    height: auto;
+    min-height: 56px;
+    padding: 8px 12px;
+    flex-wrap: nowrap;
+    gap: 8px;
+  }
+  .sdui-brand-title {
+    flex: 1 1 auto;
+    font-size: 15px;
+    line-height: 1.25;
+    white-space: nowrap;
+  }
+  .sdui-brand-long {
+    display: none;
+  }
+  .sdui-options-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 44px;
+    min-height: 44px;
+    border: 1px solid var(--border);
+    border-radius: 5px;
+    background: var(--code-bg);
+    color: var(--text-h);
+    font-size: 20px;
+    cursor: pointer;
+  }
+  .sdui-header-actions {
+    display: none;
+    position: absolute;
+    top: calc(100% - 1px);
+    right: 8px;
+    z-index: 60;
+    width: min(280px, calc(100vw - 16px));
+    padding: 8px;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 4px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    background: var(--code-bg);
+    box-shadow: 0 12px 30px rgb(0 0 0 / 32%);
+  }
+  .sdui-header-actions.sdui-options-open {
+    display: flex;
+  }
+  .sdui-header-actions button {
+    width: 100%;
+    min-height: 44px;
+    white-space: normal;
+    text-align: left;
+  }
+  .sdui-global-sidebar {
+    width: 48px;
+  }
+  .sdui-work-surface {
+    padding: 20px 16px;
+  }
+  .sdui-work-surface h2 {
+    font-size: 28px;
+    line-height: 1.15;
+  }
+  .sdui-work-surface .mb-10 {
+    margin-bottom: 24px;
+  }
+  .sdui-work-surface .sdui-matrix-tile {
+    padding: 16px;
+  }
+  .sdui-json-header {
+    padding-inline: 16px;
+  }
+  .sdui-json-textarea {
+    padding: 16px;
+  }
+}
+
+@media (pointer: coarse) {
+  .sdui-global-sidebar > *,
+  .sdui-header-actions button,
+  .sdui-json-header button,
+  .sdui-json-footer button {
+    min-width: 44px;
+    min-height: 44px;
+  }
+}
+
+@media (min-width: 640px) and (max-width: 959px) {
+  .sdui-global-header {
+    height: auto;
+    min-height: 56px;
+    padding: 8px 12px;
+    gap: 8px;
+  }
+  .sdui-brand-title {
+    flex: 1 1 auto;
+    font-size: 15px;
+    line-height: 1.25;
+    white-space: nowrap;
+  }
+  .sdui-brand-long {
+    display: none;
+  }
+  .sdui-options-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 44px;
+    min-height: 44px;
+    border: 1px solid var(--border);
+    border-radius: 5px;
+    background: var(--code-bg);
+    color: var(--text-h);
+    font-size: 20px;
+    cursor: pointer;
+  }
+  .sdui-header-actions {
+    display: none;
+    position: absolute;
+    top: calc(100% - 1px);
+    right: 8px;
+    z-index: 60;
+    width: min(280px, calc(100vw - 16px));
+    padding: 8px;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 4px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    background: var(--code-bg);
+    box-shadow: 0 12px 30px rgb(0 0 0 / 32%);
+  }
+  .sdui-header-actions.sdui-options-open {
+    display: flex;
+  }
+  .sdui-header-actions button {
+    width: 100%;
+    min-height: 44px;
+    text-align: left;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .sdui-matrix-tile {
+    transition: none;
+  }
+  .sdui-matrix-tile:hover {
+    transform: none;
+  }
+}
+
+.sdui-work-surface > div > h2,
+.sdui-work-surface section[aria-label='Blade sizing and behavior examples'] {
+  margin-top: 40px;
+}
+.sdui-theme-button {
+  color: var(--text-h);
+  background: var(--code-bg);
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  cursor: pointer;
+}
+.sdui-header-actions .sdui-theme-button {
+  padding: 6px 12px;
+  font-size: 12px;
+}
+.sdui-theme-button:hover {
+  background: var(--border);
+}

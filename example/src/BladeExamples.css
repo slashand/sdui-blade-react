@@ -1,0 +1,129 @@
+.sdui-example-grid {
+  margin-block: 24px 40px;
+}
+.sdui-example-card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-width: 0;
+  padding: 24px;
+  min-height: 240px;
+  text-align: left;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--code-bg);
+  color: var(--text-h);
+  cursor: pointer;
+}
+.sdui-example-card:hover,
+.sdui-example-card[aria-pressed='true'] {
+  border-color: var(--accent-border);
+  background: color-mix(in srgb, var(--accent) 10%, var(--code-bg));
+}
+.sdui-example-category {
+  color: var(--accent);
+  font-size: 12px;
+}
+.sdui-example-name {
+  font-weight: 700;
+  font-size: 18px;
+}
+.sdui-example-description {
+  font-size: 14px;
+  line-height: 1.625;
+  color: var(--text);
+  flex: 1;
+}
+.sdui-example-card-action {
+  font-size: 12px;
+  font-weight: 600;
+}
+.sdui-example-button {
+  min-height: 36px;
+  padding: 8px 12px;
+  border: 1px solid var(--th-border);
+  border-radius: 5px;
+  background: var(--th-element-bg);
+  color: var(--th-text-primary);
+  cursor: pointer;
+  overflow-wrap: anywhere;
+}
+.sdui-example-button:hover,
+.sdui-example-button[aria-pressed='true'] {
+  background: var(--th-element-bg-hover);
+}
+.sdui-example-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+}
+.sdui-example-field input {
+  min-width: 0;
+  width: 100%;
+  padding: 8px;
+  border: 1px solid var(--th-border);
+  border-radius: 4px;
+  background: var(--th-element-bg);
+  color: var(--th-text-primary);
+}
+.sdui-example-scroll-block {
+  flex: 0 0 120px;
+  padding: 16px;
+  border: 1px solid var(--th-border);
+  background: var(--th-element-bg);
+}
+.sdui-example-limited-box {
+  display: flex;
+  flex-direction: column;
+  flex: 0 0 300px;
+  min-height: 0;
+  border: 1px solid var(--th-border);
+}
+.sdui-example-limited-box h3 {
+  padding: 12px;
+  border-bottom: 1px solid var(--th-border);
+}
+.sdui-example-limited-list {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 12px;
+}
+.sdui-example-limited-list p {
+  padding-block: 12px;
+}
+.sdui-example-alignment-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+.sdui-example-footer {
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.sdui-example-naked {
+  width: 100%;
+  max-width: var(--sdui-blade-w-large, 855px);
+  height: 100%;
+  margin-left: auto;
+  overflow-y: auto;
+  padding: 24px;
+  color: var(--th-text-primary);
+  background: var(--th-panel-bg);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+}
+.sdui-example-naked h2 {
+  font-size: 28px;
+  font-weight: 700;
+}
+@media (any-pointer: coarse) {
+  .sdui-example-button,
+  .sdui-example-field input {
+    min-height: 44px;
+  }
+}
