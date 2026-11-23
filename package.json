@@ -22,7 +22,9 @@
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
-    "dist"
+    "dist",
+    "!dist/**/*.spec.*",
+    "!dist/**/*.test.*"
   ],
   "exports": {
     ".": {
@@ -32,7 +34,7 @@
     }
   },
   "scripts": {
-    "build": "tsc",
+    "build": "tsc && node scripts/check-package.mjs",
     "dev": "tsc -w",
     "format": "prettier --write \"src/**/*.{ts,tsx}\"",
     "test": "vitest run",

@@ -11,7 +11,21 @@ export function cn(...inputs: ClassValue[]) {
 // Extremely dense (p-4) to satisfy rigid structural limits.
 // -------------------------------------------------------------------------------------------------
 
-export type BladeSize = 'menu' | 'small' | 'medium' | 'large' | 'xlarge' | 'full' | 'xl' | '2xl' | '3xl' | '4xl' | '5xl' | '6xl' | '7xl' | 'custom';
+export type BladeSize =
+  | 'menu'
+  | 'small'
+  | 'medium'
+  | 'large'
+  | 'xlarge'
+  | 'full'
+  | 'xl'
+  | '2xl'
+  | '3xl'
+  | '4xl'
+  | '5xl'
+  | '6xl'
+  | '7xl'
+  | 'custom';
 
 const bladeSizeMaxWidths: Record<BladeSize, string> = {
   menu: 'var(--sdui-blade-w-menu, 265px)',
@@ -36,10 +50,10 @@ export interface BaseBladeProps extends React.HTMLAttributes<HTMLDivElement> {
   children: React.ReactNode;
 }
 
-export function BaseBlade({ children, widthClass, size = 'large', className, style, ...props }: BaseBladeProps) {
+export function BaseBlade({ children, widthClass, size = 'full', className, style, ...props }: BaseBladeProps) {
   // If legacy widthClass is provided, use it. Otherwise, use strict Aztec size constraints.
   const isFull = size === 'full';
-  
+
   // We use inline styles for width constraints to bypass Tailwind JIT compiler omissions in consumer repos
   const resolvedStyle: React.CSSProperties = {
     width: '100%',
@@ -88,6 +102,26 @@ export function BladeHeader({ title, subtitle, icon, commands, onClose, children
       </div>
 
       <div className="sdui-blade-actions flex items-center gap-3">
+        <style>{`
+          .sdui-blade-close {
+            background: var(--sdui-close-background, transparent);
+            color: var(--sdui-close-color, var(--th-text-primary, inherit));
+            border: 0;
+          }
+          .sdui-blade-close:enabled:hover {
+            border: var(--sdui-close-hover-border, 0);
+            background: var(--sdui-close-hover-background, #c42b1c);
+            color: var(--sdui-close-hover-color, var(--sdui-close-color, #fff));
+          }
+          .sdui-blade-close:enabled:active {
+            border: var(--sdui-close-active-border, 0);
+            background: var(--sdui-close-active-background, #8f1d12);
+          }
+          .sdui-blade-close:focus-visible { outline: 2px solid currentColor; outline-offset: 2px; }
+          @media (forced-colors: active) {
+            .sdui-blade-close { background: ButtonFace; color: ButtonText; }
+          }
+        `}</style>
         {commands && (
           <div className="sdui-blade-commands flex items-center gap-2 border-r border-[var(--th-border)] pr-3 mr-1">
             {commands}
@@ -99,7 +133,8 @@ export function BladeHeader({ title, subtitle, icon, commands, onClose, children
         {onClose && (
           <button
             onClick={onClose}
-            className="sdui-blade-close p-1.5 rounded-md hover:bg-[var(--th-element-bg)] text-[var(--th-text-secondary)] hover:text-[var(--th-text-primary)] transition-colors cursor-pointer"
+            type="button"
+            className="sdui-blade-close p-1.5 rounded-md transition-colors cursor-pointer"
             aria-label="Close Blade"
           >
             <svg
@@ -131,11 +166,31 @@ export function BladeContent({ children, className }: { children: React.ReactNod
   );
 }
 
-export function BladeFooter({ children }: { children?: React.ReactNode }) {
+export type BladeFooterAlignment = 'left' | 'center' | 'right' | 'between';
+
+export interface BladeFooterProps extends React.HTMLAttributes<HTMLDivElement> {
+  align?: BladeFooterAlignment;
+}
+
+const footerJustification: Record<BladeFooterAlignment, React.CSSProperties['justifyContent']> = {
+  left: 'flex-start',
+  center: 'center',
+  right: 'flex-end',
+  between: 'space-between',
+};
+
+export function BladeFooter({ children, align = 'right', className, style, ...props }: BladeFooterProps) {
   if (!children) return null;
 
   return (
-    <div className="flex-shrink-0 bg-[var(--th-panel-bg)] border-t border-[var(--th-border)] px-5 py-4 flex items-center justify-end z-10 w-full shadow-[0_-10px_20px_rgba(0,0,0,0.2)]">
+    <div
+      className={cn(
+        'sdui-blade-footer flex-shrink-0 bg-[var(--th-panel-bg)] border-t border-[var(--th-border)] px-5 py-4 flex items-center z-10 w-full shadow-[0_-10px_20px_rgba(0,0,0,0.2)]',
+        className,
+      )}
+      style={{ justifyContent: footerJustification[align], ...style }}
+      {...props}
+    >
       {children}
     </div>
   );
